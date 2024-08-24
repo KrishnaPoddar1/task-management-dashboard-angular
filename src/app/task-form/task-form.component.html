@@ -1,0 +1,30 @@
+<div class="container mt-4 w-50 mx-auto">
+    <h1 class="text-center mb-4"> {{isEditMode? 'Edit task' :'Add task' }} </h1>
+    <form (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" id="title" class="form-control" name="title" [(ngModel)]="title" />
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea id="description" class="form-control" name="description" [(ngModel)]="description"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="dueDate" class="form-label">Due Date</label>
+            <input type="date" id="dueDate" class="form-control" name="dueDate" [(ngModel)]="dueDate" />
+        </div>
+        <div class="mb-3">
+            <label for="status" class="form-label">Status:</label>
+            <select name="status" class="form-select" id="status" [(ngModel)]="status">
+                <option value="Pending">Pending</option>
+                <option value="In-Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+            </select>
+        </div>
+        <button type="submit" class="btn w-100 mb-5" [ngClass]="{
+            'btn-success': isEditMode!==true,
+            'btn-outline-primary':isEditMode===true
+        }">{{isEditMode? 'Update task' :'Add task' }}</button>
+    </form>
+</div>
+
